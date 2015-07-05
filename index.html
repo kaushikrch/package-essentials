@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R-Package Essentials</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R-Package Essentials">
+  <meta name="author" content="Kaushik Roy Chowdhury">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/github.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>R-Package Essentials</h1>
+    <h2></h2>
+    <p>Kaushik Roy Chowdhury<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Classes</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Objects sharing specific attributes. </li>
+</ul>
+
+<pre><code class="r">x &lt;- c(1, 2, 3)
+class(x)
+</code></pre>
+
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre>
+
+<pre><code class="r">mod &lt;- lm(mpg ~ disp, data = mtcars)
+class(mod)
+</code></pre>
+
+<pre><code>## [1] &quot;lm&quot;
+</code></pre>
+
+<ul>
+<li>Example: an object of class &quot;lm&quot;, generated from the lm function,
+is really just a list with some specific attributes</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Methods</h2>
+  </hgroup>
+  <article data-timings="">
+    <style>
+em {
+  font-style: italic
+}
+</style>
+
+<style>
+strong {
+  font-weight: bold;
+}
+</style>
+
+<ul>
+<li>Functions that behave differently depending on the class of their input. </li>
+</ul>
+
+<pre><code class="r">print(x)
+</code></pre>
+
+<pre><code>## [1] 1 2 3
+</code></pre>
+
+<pre><code class="r">print(mod)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ disp, data = mtcars)
+## 
+## Coefficients:
+## (Intercept)         disp  
+##    29.59985     -0.04122
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Method Dispatching</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Generic Functions</strong>: Functions that pass objects to the right function. <code>print()</code>, <code>predict()</code> are two such widely used functions.</li>
+</ul>
+
+<pre><code class="r">print
+</code></pre>
+
+<pre><code>## function (x, ...) 
+## UseMethod(&quot;print&quot;)
+## &lt;bytecode: 0x00000000071a5c10&gt;
+## &lt;environment: namespace:base&gt;
+</code></pre>
+
+<ul>
+<li><p><code>UseMethod()</code> tells R to look for a function that can deal with the type of object passed in <code>x</code>.</p></li>
+<li><p>To see how many printing methods are present with base R distribution type <code>methods(print)</code>.</p></li>
+<li><p>Creating a new class with methods can drastically improve the
+usability of the function and results.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>License</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>CRAN accepts packages only with open-source licensing listed <a href="https://svn.r-project.org/R/trunk/share/licenses/license.db">here</a>.</p></li>
+<li><p>&quot;The package&#39;s license must give the right for CRAN to distribute the package in perpetuity.&quot; -- <a href="http://cran.r-project.org/web/packages/policies.html">CRAN Policies</a></p></li>
+</ul>
+
+<iframe width="400" height="75" frameborder="1" src = "https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)">
+</iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Classes'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Methods'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Method Dispatching'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='License'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
